@@ -1,0 +1,14 @@
+ul {
+    list-style-type: decimal; /* Gives list items numbers */
+    font-size:25px;
+    width:20%;
+}
+#displayBooks {
+    float:left;
+    width:20%;
+}
+#displayPrice {
+    float:left;
+    width:50%;
+    list-style-type: none;
+}
