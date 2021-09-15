@@ -1,52 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jamstack Explorers - Up and Running with Serverless Functions</title>
-  </head>
-  <body>
-    <h1>Up and Running with Serverless Functions</h1>
-    <button id="fetch-btn">Fetch</button>
-    <button id="fetch-kanto-btn"> Fetch Kanto Pokedex</button>
-    <button id="fetch-hoenn-btn">Fetch Hoenn Pokedex</button>
-    <p id="response-output">Response Placeholder</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const fetchBtn = document.getElementById('fetch-btn')
-        const fetchKantoBtn = document.getElementById('fetch-kanto-btn')
-        const fetchHoennBtn = document.getElementById('fetch-hoenn-btn')
-        const responseText = document.getElementById('response-output')
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serverless Project</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-        fetchHoennBtn.addEventListener('click', async() => {
-          const response = await fetch('/.netlify/functions/pokedex', {
-            method: 'POST',
-            body: JSON.stringify({
-              region: 'hoenn'
-            })
-          }).then(response => response.json())
+</head>
 
-          responseText.innerText = JSON.stringify(response)
-        })
+<body>
+<script>
+  arr = [];
+    function add() {
+   var myDiv = document.getElementById("myDiv");
+   var inputValue = document.getElementById("myInput").value;
+   var checkbox = document.createElement('input');
 
-        fetchKantoBtn.addEventListener('click', async() => {
-          const response = await fetch('/.netlify/functions/pokedex', {
-            method: 'POST',
-            body: JSON.stringify({
-              region: 'kanto'
-            })
-          }).then(response => response.json())
+   if (inputValue === '') {
+      alert("Cannot be Empty!");
+      return;
+   } else {
+    var person =  arr.push(prompt('Enter monthly subscription cost'));
+    const nuevo = arr.map((i) => Number(i));
+    const sum = nuevo.reduce((a, b) => a + b);
 
-          responseText.innerText = JSON.stringify(response)
-        })
-        fetchBtn.addEventListener('click', async () => {
-          const response = await fetch('/.netlify/functions/hello-world').then(response => response.json())
+    
+    
+    
+    // alert('Monthly total: ' + sum); 
+    if (person != null) {
+      // document.getElementById("demo").innerHTML =
+      // "$" + nuevo + " for " + inputValue;
+      setTimeout(function(){
+        document.getElementById("demo").innerHTML = '';
+      }, 1500);
+      document.getElementById("subsCost").innerHTML = sum;
+      
+    } 
+    document.getElementById("myUL").appendChild(checkbox);
+    
+  }
+  console.log(arr);
+  
+  // Assigning the attributes to created checkbox 
+  checkbox.type = "checkbox";
+  checkbox.name = "name";
+  checkbox.value = "value";
+  checkbox.classList.add("checkbox");
+  
+  // create label for checkbox 
+  var label = document.createElement('label');
+  console.log(checkbox.classList);
+  // appending the checkbox and created text to the created label tag   
+  label.appendChild(checkbox);
+  label.appendChild(document.createTextNode(inputValue));
+  
+  // appending label to div
+  myDiv.appendChild(label);
+  return arr;
+}
 
-          responseText.innerText = JSON.stringify(response)
-        })
-      })
-    </script>
-  </body>
+function remove() {
+  const checkboxes = document.querySelectorAll('.checkbox:checked');
+  Array.prototype.forEach.call(checkboxes, function(checkbox) {
+    console.log(checkboxes);
+    console.log(checkbox.closest)
+    checkbox.closest('label').remove();
+  });
+}
+</script>
+
+<h1>List!</h1>
+
+  <input type="text" id="myInput">
+
+  <button onclick='add()'>Add a Subscription</button>
+  <button onclick="remove()">Delete a Subscription</button>
+
+  <ul id="myUL">
+     <div id="myDiv"></div>
+  </ul>
+  <ul id="demo">
+    <div id="myDiv"></div>
+ </ul>
+ 
+<div>
+  <ul>
+    <h2>Monthly Subscription Cost:</h2>
+    <div id="subsCost"></div>
+  </ul>
+</div>
+
+</body>
+
 </html>
