@@ -8,7 +8,7 @@ const handleVal = (id) => {
 const getResult = (subs) => subs.reduce((acc, sub) => acc + sub.value, 0);
 const displayResult = (result) => getEl('subs-cost').textContent= result;
 const addDeleteSpan = (liEl, subIndex) => {
-    const deleteSpan = document.createElement('span');
+    const deleteSpan = document.createElement('button');
     deleteSpan.textContent = '     delete';
     deleteSpan.addEventListener('click', (event) => {
         subs.splice(subIndex, 1);
