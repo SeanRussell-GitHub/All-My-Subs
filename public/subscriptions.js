@@ -10,6 +10,7 @@ const displayResult = (result) => getEl('subs-cost').textContent= result;
 const addDeleteSpan = (liEl, subIndex) => {
     const deleteSpan = document.createElement('button');
     deleteSpan.textContent = '     delete';
+    deleteSpan.className = "btn waves-effect waves-light";
     deleteSpan.addEventListener('click', (event) => {
         subs.splice(subIndex, 1);
         buildSubsList(subs);
