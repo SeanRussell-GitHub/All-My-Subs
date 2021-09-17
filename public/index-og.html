@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serverless Project</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <script>
+    arr = [];
+    function add() {
+      document.getElementById("remove").style.visibility = "visible";
+      var myDiv = document.getElementById("myDiv");
+      var inputValue = document.getElementById("myInput").value;
+      checkbox = document.createElement('input');
+      if (inputValue === '') {
+        alert("Please enter a subscription name");
+        return;
+      } else {
+        var cost = prompt('enter monthly sub cost')
+        console.log(cost);
+        var person = arr.push(cost);
+        console.log(person);
+        console.log(cost)
+        const nuevo = arr.map((i) => Number(i));
+        globaltotal = nuevo.reduce((a, b) => a + b);
+        if (person != null) {
+          
+          setTimeout(function () {
+            document.getElementById("demo").innerHTML = '';
+          }, 1500);
+          document.getElementById("subsCost").innerHTML = "$" + globaltotal;
+        }
+        document.getElementById("myUL").appendChild(checkbox);
+      }
+      // checkbox attributes 
+      checkbox.type = "checkbox";
+      checkbox.name = person;
+      checkbox.value = cost;
+      checkbox.classList.add("checkbox");
+      
+      // label for checkbox 
+      var label = document.createElement('label');
+      // appending the checkbox and created text to the created label tag   
+      label.appendChild(checkbox);
+      label.appendChild(document.createTextNode(inputValue));      
+      // appending label to div
+      myDiv.appendChild(label);
+      console.log(globaltotal)
+      console.log(checkbox.value)
+      return globaltotal, checkbox;
+    }
+
+    function remove() {
+      console.log(globaltotal)
+      console.log(checkbox.value)
+      const checkboxesVisible = document.querySelectorAll('.checkbox')
+      const checkboxes = [...document.querySelectorAll('.checkbox:checked')]
+      checkboxes.forEach(function (checkbox) {
+        globaltotal = globaltotal - checkbox.value;
+        document.getElementById("subsCost").innerHTML = "$" + globaltotal;
+        console.log(globaltotal)
+        checkbox.closest('label').remove();
+      //   if (checkbox === ""){
+      //     document.getElementById("remove").style.visibility = "hidden";
+      // }
+        return globaltotal;
+      });
+    }
+  </script>
+
+  <h1>Subscription List!</h1>
+
+  <input type="text" id="myInput">
+
+  <button onclick='add()'>Add a Subscription</button>
+  
+  <ul id="myUL">
+    <div id="myDiv"></div>
+  </ul>
+  <ul id="demo">
+    <div id="myDiv"></div>
+  </ul>
+  <button id="remove" style="visibility:hidden" onclick="remove()">Delete a Subscription</button>
+
+  <div>
+    <ul>
+      <h2>Monthly Subscription Cost:</h2>
+      <div id="subsCost"></div>
+    </ul>
+  </div>
+
+</body>
+
+</html>
