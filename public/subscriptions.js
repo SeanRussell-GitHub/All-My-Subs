@@ -6,10 +6,11 @@ const handleVal = (id) => {
     return val;
 }
 const getResult = (subs) => subs.reduce((acc, sub) => acc + sub.value, 0);
-const displayResult = (result) => getEl('subs-cost').textContent= result;
+const displayResult = (result) => getEl('subs-cost').textContent= ` $ ${result}`;
 const addDeleteSpan = (liEl, subIndex) => {
-    const deleteSpan = document.createElement('span');
-    deleteSpan.textContent = '     delete';
+    const deleteSpan = document.createElement('button');
+    deleteSpan.textContent = ' delete ';
+    deleteSpan.className = "btn waves-effect waves-light";
     deleteSpan.addEventListener('click', (event) => {
         subs.splice(subIndex, 1);
         buildSubsList(subs);
@@ -24,9 +25,10 @@ const buildSubsList = (subs) => {
     subsUl.innerHTML = '';
     subs.forEach((sub, i) => {
         const liEl = document.createElement('li');
-        liEl.textContent = `${sub.name} - $${sub.value}`;
+        liEl.textContent = ` ${sub.name} - $${sub.value} `;
         addDeleteSpan(liEl, i);
         subsUl.append(liEl);
+        document.getElementById("hidden-list").style.visibility = "visible";
     })
 }
 const addSub = (event) => {

@@ -1,5 +1,5 @@
-ul {
-    list-style-type: decimal; /* Gives list items numbers */
+/* ul {
+    list-style-type: decimal; /* Gives list items numbers 
     font-size:25px;
     width:20%;
 }
@@ -11,4 +11,44 @@ ul {
     float:left;
     width:50%;
     list-style-type: none;
+} */
+/* .btn {
+    border: 2px solid rgb(11, 212, 78);
+} */
+.brdr {
+    border: 2px solid rgba(0, 255, 85, 0.479);
 }
+.bkgrnd {
+    background-color: lightblue;
+}
+.hidden {
+    visibility: hidden;
+}
+.card-panel {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding:10px 10px 10px 10px;
+}
+#hidden-list {
+    margin-left:75px;
+}
+#add-a-sub {
+    margin-right: 175;
+}
+#monthly-total {
+    margin-left:75px;
+}
+#card-panel {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding:10px 10px 10px 10px;
+}
+#subs-list {
+    font-size: 120%;
+  }
+  #tech-panel {
+    margin-left: 29px;
+    margin-right: 29px;
+    padding:10px 10px 10px 10px;
+  }
+  https://github.com/SeanRussell-GitHub
